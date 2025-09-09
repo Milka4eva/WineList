@@ -1,0 +1,79 @@
+/* Базовая типографика — можно оставить как есть */
+body {
+  font-family: 'Trebuchet MS','Lucida Sans Unicode','Lucida Grande','Lucida Sans',Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: rgb(11, 117, 149);
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+h2 {
+  text-align: center;
+  color: rgb(97, 46, 46);
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+  font-style: italic;
+  font-family: cursive;
+}
+
+h3 {
+  text-align: center;        /* лучше центр, чтобы цены не "скакали" */
+  color: rgb(55, 50, 50);
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+/* Исправляем картинки: предыдущие max-height/max-width были некорректными */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Сетка вин */
+.winelist {
+  display: flex;
+  flex-wrap: wrap;           /* перенос строк */
+  gap: 16px;
+  justify-content: center;   /* чтобы ряды были по центру */
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* Карточка */
+.wineitem {
+  flex: 1 1 200px;           /* базовая ширина карточки ~200px, растёт/сжимается */
+  max-width: 220px;          /* не шире этой границы на десктопе */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* МЕДИАЗАПРОС — помести его В САМЫЙ НИЗ ФАЙЛА */
+@media (max-width: 768px) {
+  .winelist {
+    flex-direction: column;  /* по одной в колонку */
+    align-items: center;     /* центрируем колонку */
+  }
+
+  .wineitem {
+    flex: 0 0 auto;          /* убираем flex-basis 200px, чтобы не сопротивлялась */
+    width: 90%;              /* почти на всю ширину экрана */
+    max-width: 520px;        /* ограничение, чтобы не была слишком широкой на планшетах */
+  }
+}
+
